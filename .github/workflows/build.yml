@@ -17,28 +17,27 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - uses: ./.github/actions/texlive
-#      - name: Build Thesis
-#        run: arara --verbose main
-#      - name: Upload Artifact
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: thesis
-#          path: tuda_logo.pdf
-#          if-no-files-found: error
-#  publish:
-#    name: Publish
-#    runs-on: ubuntu-latest
-#    needs: build
-#    permissions: {}
-#    steps:
-#      - name: Download Artifact
-#        uses: actions/download-artifact@v3
-#        with:
-#          name: thesis
-#      - name: Send Telegram Notification
-#        uses: appleboy/telegram-action@master
-#        with:
-#          to: ${{ secrets.TELEGRAM_TO }}
-#          token: ${{ secrets.TELEGRAM_TOKEN }}
-#          message: A fresh version of your thesis was created!
-#          document: thesis/main.pdf
+      - name: Build Thesis
+        run: arara --verbose main
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: thesis
+          path: main.pdf
+          if-no-files-found: error
+  telegram:
+    name: Notify Telegram
+    runs-on: ubuntu-latest
+    needs: build
+    permissions: {}
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: thesis
+      - name: Send Telegram Notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          document: thesis/main.pdf
