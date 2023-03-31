@@ -6,4 +6,4 @@ jobs:
     name: Install
     runs-on: ubuntu-lastest
     steps:
-      - uses: ./.github/workflows/install-texlive.yml
+      - uses: ./.github/workflows/install-texlive
