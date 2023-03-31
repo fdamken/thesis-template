@@ -1,4 +1,4 @@
-name: Install TeXLive (Cache Evict)
+name: Install/Update TeXLive
 on:
   workflow_dispatch:
 jobs:
