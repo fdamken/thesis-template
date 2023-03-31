@@ -5,5 +5,5 @@ runs:
     - name: Setup TeXLive
       uses: teatimeguest/setup-texlive-action@v2
       with:
-        packages: scheme-minimal
+        packages: scheme-full
         update-all-packages: true
