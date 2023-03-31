@@ -1,0 +1,27 @@
+name: Build
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    name: Build Document
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: thesis
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Install TeX Live
+        uses: zauguin/install-texlive@v2
+        with:
+          packages: scheme-full  # Just install the full distribution, the directory is cached anyway.
+      - name: Build Thesis
+        run: arara --verbose main
+      - name: Upload Artifact (Light Mode)
+        uses: actions/upload-artifact@v3
+        with:
+          name: main.pdf
+          path: main.pdf
+          if-no-files-found: error
