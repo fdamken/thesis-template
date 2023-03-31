@@ -1,0 +1,12 @@
+\chapter{Results}  \IMRADlabel{results}
+% TODO: RESULTS
+
+Our experimental evaluation of several machine learning techniques for intrusion detection in cybersecurity revealed several key findings.
+
+First, we found that deep \acp{NN} consistently outperformed other machine learning models, achieving an overall accuracy of \SI{96}{\percent} in detecting attacks. \Acp{SVM} also showed promising results, with an accuracy of \SI{93}{\percent}. \Acp{DT} and \acp{RF}, on the other hand, had lower accuracy rates of \SI{85}{\percent} and \SI{87}{\percent}, respectively.
+
+Second, we found that the performance of the models varied depending on the type of attack being detected. Deep \acp{NN} and \acp{SVM} performed well in detecting \ac{DDoS} attacks, with accuracies of \SI{98}{\percent} and \SI{95}{\percent}, respectively. \Acp{DT} and \acp{RF}, on the other hand, had lower accuracies of \SI{83}{\percent} and \SI{85}{\percent}, respectively, for \ac{DDoS} attacks. For \ac{DoS} attacks, all models achieved high accuracies, ranging from \SI{90}{\percent} to \SI{98}{\percent}. However, for buffer overflow attacks, the accuracies of all models were lower, ranging from \SI{76}{\percent} to \SI{82}{\percent}.
+
+Third, we found that feature selection techniques had a significant impact on the performance of the models. The use of \ac{MI}-based feature selection improved the accuracy of all models by \SIrange{2}{3}{\percent}, while \ac{PCA}-based feature selection had a mixed impact on the performance of the models.
+
+Overall, our results suggest that deep \acp{NN} and \acp{SVM} are effective machine learning techniques for intrusion detection in cybersecurity. Additionally, the use of feature selection techniques can further improve the accuracy of the models.

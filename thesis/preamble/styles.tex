@@ -1,0 +1,62 @@
+% prevent usage of \cite; use \autocite instead
+\undef{\cite}
+
+% prevent usage of \eqref and \autoref; use \cref instead
+\undef{\eqref}
+\undef{\autoref}
+
+% csquotes: easy quotes
+\MakeOuterQuote{"}
+
+% amsthm: theorems
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+% exclude subsections from toc
+\setcounter{tocdepth}{1}
+
+% tikzmake arrow longer
+\tikzset{> = { Latex[length = 2mm] }}
+
+% algorithm2e: typeset comments as \text not \texttt
+\SetCommentSty{text}
+
+
+% Abbreviations.
+\newcommand{\eg}{e.g.\xspace}
+\newcommand{\etc}{etc.\xspace}
+\newcommand{\ie}{i.e.\xspace}
+\newcommand{\iid}{i.i.d.\xspace}
+\newcommand{\vs}{vs.\xspace}
+\newcommand{\wrt}{w.r.t.\xspace}
+
+% make loa, lof, lot sections
+\makeatletter
+\newcommand{\listalgorithmname}{List of Algorithms}
+\renewcommand\listofalgorithms{
+	\section*{\listalgorithmname}
+%	\@mkboth{\MakeUppercase\listalgorithmname}{\MakeUppercase\listalgorithmname}
+	\@starttoc{loa}
+}
+\renewcommand\listoffigures{
+	\section*{\listfigurename}
+%	\@mkboth{\MakeUppercase\listfigurename}{\MakeUppercase\listfigurename}
+	\@starttoc{lof}
+}
+\renewcommand\listoftables{
+	\section*{\listtablename}
+%	\@mkboth{\MakeUppercase\listtablename}{\MakeUppercase\listtablename}
+	\@starttoc{lot}
+}
+\makeatother
+
+% glossaries
+\renewcommand{\abbreviationsname}{Abbreviations}
+\let\glsfirst\undefined
+\let\glsfirstplural\undefined
+\let\glstext\undefined
+\let\glsplural\undefined
+
+% caption: center single-line captions, flush multi-line captions to the left
+\captionsetup{singlelinecheck=on}

@@ -709,3 +709,10 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,osx,git,latex,vim,intellij+all,visualstudiocode,python
+
+
+# exclude compiled document
+main.pdf
+
+# metadata from the pdf/a
+*.xmpdata

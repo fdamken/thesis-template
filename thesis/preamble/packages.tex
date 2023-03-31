@@ -1,0 +1,75 @@
+\makeatletter
+% WORKAROUND: biblatex is incompatible with etextools (loaded by autonum) and
+% throws an error if etextools is loaded. However, autonum takes care of
+% ensuring compatibility with other packages by restoring the functionality of
+% the errorness commands. Defining 'blx@noerroretextools' ignores the error
+% biblatex throws and turns it into a warning.
+% The warning reads as follows. You can safely ignore it.
+%     Incompatible package 'etextools' loaded,(biblatex) no error is thrown
+%     because you defined(biblatex) '\blx@noerroretextools'.
+\@namedef{blx@noerroretextools}{}
+\makeatother
+
+% core
+\usepackage[
+	main=USenglish,  % main language is US English
+	ngerman,         % secondary is German (for the affidavit)
+]{babel}
+
+% math
+\usepackage{mathtools}  % basic tools, includes amsmath and must be loaded first
+\usepackage{amssymb}    % extended mathematical symbols
+\usepackage{amsthm}     % theorems
+\usepackage{physics}    % d/dv, differentials, etc.
+\usepackage{siunitx}    % units and number typesetting
+
+% references (load order amsmath -> hyperref -> cleveref -> autonum is crucial)
+\usepackage{hyperref}              % basic references
+\usepackage[capitalize]{cleveref}  % better references
+\usepackage{autonum}               % auto-numbering equations
+\usepackage{etoolbox}
+
+% other
+\usepackage[
+	ruled,          % enclose algorithms in horizontal lines; maybe try 'boxed' or 'boxruled' once
+	algochapter,    % include chapter number
+	vlined,         % mark blocks with vertical lines
+	noend,          % omit 'end' keyword (Pythonic)
+	linesnumbered,  % number lines
+	resetcount,     % reset line number count at the beginning of each algorithm
+]{algorithm2e}                       % pseudocode
+\usepackage[
+	backend=biber,       % use biber backend
+	style=numeric-comp,  % compact citation mode, e.g., [1-4] instead of [1, 2, 3, 4]
+	sorting=none,        % sort by appearance in text
+]{biblatex}                          % bibliography
+\usepackage{booktabs}                % beautiful tables
+\usepackage[autostyle]{csquotes}     % correct styling of quotes
+\usepackage[useregional]{datetime2}  % date/time formatting
+\usepackage[bottom]{footmisc}        % force footnotes to be below floats
+\usepackage{enumitem}                % styling of list environments
+\usepackage[
+	nopatch=footnote,  % footnote patching is incompatible with hyperref
+]{microtype}                  % fine-tuning of fonts
+\usepackage[
+	abbreviations,            % create abbreviations glossary
+	symbols,                  % create symbol glossary
+	nomain,                   % do not use main glossary
+	nogroupskip,              % do not add a blank row between groups
+	record,                   % use bib2gls
+	section,                  % place glossaries in sections, not chapters
+	stylemods=longbooktabs,   % load booktabs style
+	style=long3col-booktabs,  % use booktabs style
+	shortcuts=ac,             % enable \ac, \acp, etc. as shortcuts
+	toc=false,                % do not add glossaries to table of contents
+]{glossaries-extra}                  % glossaries
+\usepackage{subcaption}              % subfigures
+\usepackage{xspace}                  % intelligent space (after macros)
+
+% TikZ
+\usepackage{tikz}       % tikz itself
+\usepackage{tikzscale}  % scaling tikz pictures
+\usetikzlibrary{
+	arrows.meta,  % arrow styling
+	positioning,  % relative positioning
+}

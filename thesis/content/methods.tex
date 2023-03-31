@@ -1,0 +1,32 @@
+\chapter{Methodology}  \IMRADlabel{methods}
+% TODO: METHODOLOGY
+
+We used a supervised learning approach to evaluate the effectiveness of various machine learning models for intrusion detection in cybersecurity. The dataset used in our experiments contained a total of \(N\) samples, each with \(M\) features. The dataset was split into training and testing sets using a \(70:30\) split.
+
+Each of the machine learning models was trained on the training set using the following formula:
+\begin{equation}
+	y_i = f(x_i; \theta)
+\end{equation}
+where \(x_i\) is the feature vector for the \(i\th\) sample, \(\theta\) are the model parameters, and \(f(\cdot)\) is the mapping function that maps the input features to the predicted output \(y_i\). The training process involved minimizing the following cost function:
+\begin{equation}
+	\gls{objective}(\theta) = \frac{1}{2 m} \sum_{i = 1}^{m} \bigl( y_i - f(x_i; \theta) \bigr)^2 + \lambda \norm{\theta}^2
+	\label{eq:objective}
+\end{equation}
+In \cref{eq:objective}, \(m\) is the number of training samples, \(\lambda\) is the regularization parameter, and \(\norm{\theta}\) is the L2-norm of the model parameters.
+
+To select the optimal set of features for each model, we used a feature selection technique based on \ac{MI}. The \ac{MI} between each feature and the target variable was calculated using the following formula:
+\begin{equation}
+	\gls{mutual-information}(X; Y) = \sum_{y \in Y} \sum_{x \in X} p(x, y) \log \frac{p(x, y)}{p(x) p(y)}
+\end{equation}
+where \(X\) is the set of features and \(Y\) is the target variable. The feature with the highest \ac{MI} was selected and added to the model, and the process was repeated until the desired number of features was selected.
+
+Finally, the performance of each model was evaluated on the testing set using several evaluation metrics, including accuracy, precision, recall, and F1-score. These metrics were calculated using the following formulas:
+\begin{align}
+	\text{Accuracy}  &= \frac{\gls{TP} + \gls{TN}}{\gls{TP} + \gls{TN} + \gls{FP} + \gls{FN}} \\
+	\text{Precision} &= \frac{\gls{TP}}{\gls{TP} + \gls{FP}} \\
+	\text{Recall}    &= \frac{\gls{TP}}{\gls{TP} + \gls{FN}} \\
+	\text{F1-score}  &= \frac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{align}
+where \(\gls{TP}\) is the number of true positives, \(\gls{TN}\) is the number of true negatives, \(\gls{FP}\) is the number of false positives, and \(\gls{FN}\) is the number of false negatives.
+
+Overall, our methodology involved training several machine learning models using a supervised learning approach, selecting the optimal set of features using \ac{MI}, and evaluating the performance of each model using several evaluation metrics.

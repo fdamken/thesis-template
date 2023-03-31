@@ -1,0 +1,134 @@
+% NOTE: The below 'magic comments' are instructions for TeXStudio and similar
+%       editors. See README for detailed instructions on how to build this
+%       template and how to do so in TeXStudio.
+% !TeX document-id = {286dd695-130c-4c6e-8895-352f0b8c8c5a}
+% !TeX spellcheck = en_US
+% !TeX program = lualatex
+% !TeX TXS-program:bibliography = txs:///biber
+% !TeX TXS-program:glossary = bib2gls main
+
+\PassOptionsToPackage{hypertexnames=false}{hyperref}  % required workaround for amsmath/hyperref/cleveref/autonum
+
+% disable some warnings of packages that we cannot fix and just clutter the logs
+\RequirePackage{silence}
+\WarningFilter{biblatex}{Incompatible package 'etextools' loaded}  % we explicitly ignore the error, and thus we can ignore the warning
+\WarningFilter{etex}{Extended allocation already in use.}  % not fixable; etex will eventually be replaced
+\WarningFilter{etextools}{\pdfstrcmp primitive not found}  % etextools is only loaded by autonum and we do not use it directly
+\WarningFilter{todonotes}{The length marginparwidth is less than 2cm}  % not important; we use inline to-dos
+% NOTE: The warning 'Detected the "physics" package: omitting definition of
+%       \qty.' from siunitx remains and cannot be suppressed with \WarningFilter
+%       for some reason. You can safely ignore it.
+
+\documentclass[
+	USenglish,             % if you change this to ngerman, you have to change titles and so on, too
+	accentcolor=9b,        % TODO: adjust accent color; often set to the accent color of your research group
+	BCOR=0mm,              % TODO: adjust BCOR if necessary; a good value is 5mm
+	class=report,          % base document class
+	custommargins=false,   % do not use small margins; the computer science department does not want this
+	fontsize=11pt,
+	instbox=true,          % TODO: adjust whether group name should be shown on the title page
+	marginpar=false,       % disable margin for notes
+	parskip=half-,         % smaller spacing after lists
+	pdfa=true,             % TUBaMa requires PDF/A's
+	ruledheaders=section,  % place horizontal rules around sections, too
+	thesis={type=master},  % TODO: adjust thesis type; valid choices are 'bachelor' and 'master'
+	oneside,               % TODO: only change to 'twoside' for printing (enables \cleardoublepage)
+]{tudapub}
+
+\input{preamble/packages}
+\input{preamble/styles}
+\input{preamble/macros}
+\input{preamble/glossaries}
+
+\input{preamble/draft}  % TODO: remove draft preamble
+
+\Metadata{
+	title=Exploring the Effectiveness of Machine Learning Techniques for Intrusion Detection in Cybersecurity,  % TODO: adjust title
+	author=J. Kim,  % TODO: adjust author
+}
+
+\title{Exploring the Effectiveness of Machine Learning Techniques for Intrusion Detection in Cybersecurity}  % TODO: adjust title
+\author[J. Kim]{Jasmine Kim}  % TODO: adjust author
+\birthplace{Frankfurt am Main}
+\reviewer{  % TODO: adjust reviewers
+	Emma Johnson
+	\and
+	Daniel Lee
+	\and
+	Sophia Patel
+}
+
+\department{inf}
+%\institute{}
+\group{Cybersecurity and Privacy Research Group}  % TODO: adjust group
+\addTitleBoxLogo*{\includegraphics[width=0.75\linewidth]{example-image}}  % TODO: adjust group logo; you might want to set instbox=false
+
+\submissiondate{\DTMdisplaydate{2023}{4}{25}{-1}}  % TODO: adjust submission date
+\examdate{\DTMdisplaydate{2023}{5}{25}{-1}}  % TODO: adjust exam date
+
+\dedication{For my parents, whose unwavering love and guidance made this possible.}  % TODO: adjust dedication
+
+\addbibresource{references.bib}
+
+\begin{document}
+	% TITLE PAGES
+	\pagenumbering{gobble}
+	{
+		\maketitle
+	}
+
+	% META CONTENT
+	\cleardoublepage
+	\pagenumbering{Roman}  % I, II, …
+	{
+		\include{meta/abstract}
+		\include{meta/acknowledgements}
+		\include{meta/affidavit}
+	}
+	\glsresetall  % reset glossary entries to expand them again on first use
+
+	% LISTS
+	\cleardoublepage
+	{
+		\tableofcontents
+
+		\chapter*{Algorithms, Figures and Tables}
+			\listofalgorithms
+			\listoffigures
+			\listoftables
+		% end
+
+		\chapter*{Abbreviations and Symbols}
+			%\glsaddall  % forces all glossary entries to be shown
+			\printunsrtglossary[type=abbreviations]
+			\printunsrtglossary[type=symbols]
+		% end
+	}
+
+	% CONTENT
+	\cleardoublepage
+	\pagenumbering{arabic}  % 1, 2, …
+	{
+		\include{content/introduction}
+		\include{content/related-work}
+		\include{content/preliminaries}
+		\include{content/methods}
+		\include{content/results}
+		\include{content/discussion}
+		\include{content/conclusion}
+	}
+
+	% BIBLIOGRAPHY
+	\cleardoublepage
+	{
+		%\nocite{*}  % forces all bibliography entries to be shown
+		\printbibliography
+	}
+
+	% APPENDICES
+	\cleardoublepage
+	{
+		\appendix
+		\include{appendix/experiments}
+	}
+\end{document}

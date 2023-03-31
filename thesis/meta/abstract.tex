@@ -1,0 +1,15 @@
+% do not include references to the glossaries in the glossary page list
+\let\realglswriteentry=\glswrite
+\renewcommand*{\glswriteentry}[2]{}
+
+
+\begin{abstract}
+	% TODO: ABSTRACT
+
+	The increasing reliance on technology in modern society has led to an increase in the frequency and sophistication of cyber attacks. As a result, the need for effective intrusion detection systems has become increasingly important. Machine learning techniques have shown great promise in detecting and preventing cyber attacks. In this thesis, we investigate the effectiveness of various machine learning techniques for intrusion detection in cybersecurity. We evaluate the performance of several algorithms, including \acp{DT}, \acp{RF}, \acp{SVM}, and \acp{NN}, using a publicly available dataset. Our results show that \acp{SVM} and \acp{NN} outperform other algorithms in terms of accuracy and detection rate. We also discuss the limitations and future directions of our research, including the need for more diverse and complex datasets and the exploration of new machine learning algorithms. Our findings contribute to the ongoing effort to improve cybersecurity and enhance the effectiveness of intrusion detection systems.
+\end{abstract}
+
+
+% re-enable glossary indexing again
+\let\glswriteentry=\realglswriteentry
+\undef{\realglswriteentry}

@@ -1,0 +1,23 @@
+\usepackage{lipsum}     % lorem ipsum
+\usepackage{todonotes}  % to-dos
+
+% display to-dos inline; the tuda-margins are too small
+\setuptodonotes{inline}
+
+% re-build \lipsum command for a continuous flow of text
+\let\reallipsum\lipsum
+\newcounter{lipsumParagraphs}
+\newcounter{oldLipsumParagraphs}
+\newcounter{newLipsumParagraphs}
+\setcounter{lipsumParagraphs}{1}
+\renewcommand{\lipsum}[1]{%
+    \setcounter{oldLipsumParagraphs}{\value{lipsumParagraphs}}%
+    \addtocounter{lipsumParagraphs}{#1}%
+    \setcounter{newLipsumParagraphs}{\value{lipsumParagraphs}}%
+    \addtocounter{newLipsumParagraphs}{-1}%
+    \reallipsum[\arabic{oldLipsumParagraphs}-\arabic{newLipsumParagraphs}]%
+%    \todo{insert text here}%
+}
+
+% shortcut for 'citation needed'
+\newcommand{\needcite}{\todo{citation needed}}
