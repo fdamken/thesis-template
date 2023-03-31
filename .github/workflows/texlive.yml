@@ -1,0 +1,9 @@
+name: Install TeXLive (Cache Evict)
+on:
+  workflow_dispatch:
+jobs:
+  install:
+    name: Install
+    runs-on: ubuntu-lastest
+    steps:
+      - uses: ./.github/workflows/install-texlive.yml

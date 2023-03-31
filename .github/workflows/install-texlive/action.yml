@@ -1,0 +1,10 @@
+name: Install/Update TeXLive
+permissions: {}
+runs:
+  using: composite
+  steps:
+    - name: Install/Update TeXLive
+      uses: teatimeguest/setup-texlive-action@v2
+      with:
+        packages: scheme-full
+        update-all-packages: true
