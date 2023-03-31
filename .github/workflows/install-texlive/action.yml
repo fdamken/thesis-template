@@ -1,9 +1,0 @@
-name: Install/Update TeXLive
-runs:
-  using: composite
-  steps:
-    - name: Install/Update TeXLive
-      uses: teatimeguest/setup-texlive-action@v2
-      with:
-        packages: scheme-minimal
-        update-all-packages: true

@@ -3,7 +3,11 @@ on:
   workflow_dispatch:
 jobs:
   install:
-    name: Install
-    runs-on: ubuntu-lastest
+    name: Install and Update
+    runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/install-texlive
+      - name: Setup TeXLive
+        uses: teatimeguest/setup-texlive-action@v2
+        with:
+          packages: scheme-minimal
+          update-all-packages: true

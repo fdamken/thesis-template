@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - uses: ./.github/workflows/install-texlive
+      - uses: ./.github/workflows/texlive.yml
       - name: Install TeX Live
         uses: zauguin/install-texlive@v2
         with:
