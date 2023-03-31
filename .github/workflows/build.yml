@@ -17,10 +17,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - uses: ./.github/workflows/texlive.yml
-      - name: Install TeX Live
-        uses: zauguin/install-texlive@v2
-        with:
-          packages: scheme-small
 #      - name: Build Thesis
 #        run: arara --verbose main
 #      - name: Upload Artifact
