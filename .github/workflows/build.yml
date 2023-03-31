@@ -4,26 +4,24 @@ on:
   push:
     branches:
       - "main"
-    paths:
-      - "thesis/**"
+#    paths:
+#      - "thesis/**"
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: thesis
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - uses: ./.github/actions/texlive
       - name: Build Thesis
-        run: arara --verbose main
+        run: "arara --verbose main"
+        working-directory: ./thesis
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: thesis
-          path: main.pdf
+          path: ./thesis/main.pdf
           if-no-files-found: error
   telegram:
     name: Notify Telegram
@@ -40,4 +38,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          document: thesis/main.pdf
+          document: ./thesis/main.pdf

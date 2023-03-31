@@ -2,7 +2,7 @@
 identifier: remove
 name: Remove
 commands:
-- name: Cmoval feature
+- name: Removal feature
   command: >
     @{
         dir = directory[0];

@@ -3,6 +3,8 @@
 This is a template for (Bachelor and Master) thesis at the [computer science department](https://www.informatik.tu-darmstadt.de) of the [Technical University of Darmstadt](https://www.tu-darmstadt.de).
 It is based on TU Darmstadt's [corporate design](https://github.com/tudace/tuda_latex_templates) and extends it beyond a simple document class.
 
+I will continuously update this template as I progress with my thesis, enhancing the template even further.
+
 :warning: This template contains a thesis hallucinated by [ChatGPT](https://ai.com). Do not cite or believe it in any way!
 
 ## Main Features
