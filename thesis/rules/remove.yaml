@@ -1,0 +1,43 @@
+!config
+identifier: remove
+name: Remove
+commands:
+- name: Cmoval feature
+  command: >
+    @{
+        dir = directory[0];
+        rec = Boolean.valueOf(recursive[0]);
+        entries = listFilesByPatterns(toFile(dir), patterns, rec);
+        cmd = [];
+        if (isUnix()) {
+            cmd = [ 'rm', '-f' ];
+        } else {
+            cmd = [ 'cmd', '/c', 'del' ];
+        }
+        for (entry : entries) {
+            cmd.add(entry.toString());
+        }
+        return getCommand(cmd);
+    }
+arguments:
+- identifier: directory
+  flag: >
+    @{
+        return parameters.directory
+    }
+  default: '.'
+- identifier: recursive
+  flag: >
+    @{
+        return isTrue(parameters.recursive)
+    }
+  default: true
+- identifier: patterns
+  flag: >
+    @{
+        if (!isList(parameters.patterns)) {
+            throwError('I was expecting a list!');
+        }
+        return parameters.patterns;
+    }
+  required: true

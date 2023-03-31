@@ -1,6 +1,17 @@
-% NOTE: The below 'magic comments' are instructions for TeXStudio and similar
-%       editors. See README for detailed instructions on how to build this
-%       template and how to do so in TeXStudio.
+% Instructions for arara, the friendly LaTeX build system. Note that we are not
+%   using conditional compilation as the autonum package does not print warnings
+%   if it needs another compilation
+% arara: remove: { patterns: ['*.aux', '*.bbl', '*.bcf', '*.blg', '*.glg', '*.glstex', '*.loa', '*.lof', '*.log', '*.lot', '*.out', '*.pdf', '*.run.xml', '*.toc', '*.xmpdata', 'pdfa.xmpi'] }
+% arara: lualatex
+% arara: bib2gls if found('log', 'No entries defined in glossary')
+% arara: biber
+% arara: lualatex
+% arara: lualatex
+% arara: lualatex
+% arara: lualatex
+
+% The below 'magic comments' are instructions for TeXStudio and similar editors.
+%   See README for detailed instructions on how to build this template.
 % !TeX document-id = {286dd695-130c-4c6e-8895-352f0b8c8c5a}
 % !TeX spellcheck = en_US
 % !TeX program = lualatex
