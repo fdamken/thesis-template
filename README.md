@@ -51,4 +51,7 @@ TODO
 TODO
 
 ### Build Notifications
-TODO
+It is possible to send the latest thesis version via various notification channels.
+To configure them, refer to the [respective workflow](.github/workflows/build.yml).
+The workflow already contains a pre-built [Telegram](https://telegram.org) notifier for which you have to set the secrets `TELEGRAM_TO` and `TELEGRAM_TOKEN` to the chat ID and bot API token, respectively.
+You can do so in the [action secrets settings](https://github.com/fdamken/thesis-template/settings/secrets/actions).
