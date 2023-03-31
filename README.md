@@ -3,6 +3,8 @@
 This is a template for (Bachelor and Master) thesis at the [computer science department](https://www.informatik.tu-darmstadt.de) of the [Technical University of Darmstadt](https://www.tu-darmstadt.de).
 It is based on TU Darmstadt's [corporate design](https://github.com/tudace/tuda_latex_templates) and extends it beyond a simple document class.
 
+:warning: This template contains a thesis hallucinated by [ChatGPT](https://ai.com). Do not cite or believe it in any way!
+
 ## Main Features
 :heavy_check_mark: modern bibliography management with [BibLaTeX](https://www.ctan.org/pkg/biblatex) and [Biber](https://www.ctan.org/pkg/biber) <br>
 :heavy_check_mark: intelligent referencing with [Cleveref](https://www.ctan.org/pkg/cleveref) <br>
