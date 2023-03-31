@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - "main"
-#    paths:
-#      - "thesis/**"
+    paths:
+      - "thesis/**"
 jobs:
   build:
     name: Build
@@ -33,6 +33,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: thesis
+          path: thesis
       - name: Send Telegram Notification
         uses: appleboy/telegram-action@master
         with:
