@@ -1,7 +1,8 @@
 % Instructions for arara, the friendly LaTeX build system. Note that we are not
 %   using conditional compilation as the autonum package does not print warnings
 %   if it needs another compilation
-% arara: remove: { patterns: ['*.aux', '*.bbl', '*.bcf', '*.blg', '*.glg', '*.glstex', '*.loa', '*.lof', '*.log', '*.lot', '*.out', '*.pdf', '*.run.xml', '*.toc', '*.xmpdata', 'pdfa.xmpi'] }
+% arara: clean: { extensions: ['pdf'] }
+% arara: remove: { patterns: ['*.aux', '*.bbl', '*.bcf', '*.blg', '*.glg', '*.glstex', '*.loa', '*.lof', '*.log', '*.lot', '*.out', '*.run.xml', '*.toc', '*.xmpdata', 'pdfa.xmpi'] }
 % arara: lualatex
 % arara: bib2gls if found('log', 'No entries defined in glossary')
 % arara: biber
