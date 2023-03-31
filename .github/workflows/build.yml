@@ -9,14 +9,14 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: thesis
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - uses: ./.github/workflows/texlive.yml
+      - uses: ./.github/actions/texlive
 #      - name: Build Thesis
 #        run: arara --verbose main
 #      - name: Upload Artifact
