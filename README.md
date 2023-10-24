@@ -5,7 +5,7 @@ It is based on TU Darmstadt's [corporate design](https://github.com/tudace/tuda_
 
 I will continuously update this template as I progress with my thesis, enhancing the template even further.
 
-:warning: This template contains a thesis hallucinated by [ChatGPT](https://ai.com). Do not cite or believe it in any way!
+:warning: This template contains a thesis hallucinated by [ChatGPT](https://chat.openai.com). Do not cite or believe it in any way!
 
 ## Main Features
 :heavy_check_mark: modern bibliography management with [BibLaTeX](https://www.ctan.org/pkg/biblatex) and [Biber](https://www.ctan.org/pkg/biber) <br>
