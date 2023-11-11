@@ -43,7 +43,10 @@
 	parskip=half-,         % smaller spacing after lists
 	pdfa=true,             % TUBaMa requires PDF/A's
 	ruledheaders=section,  % place horizontal rules around sections, too
-	thesis={type=master},  % TODO: adjust thesis type; valid choices are 'bachelor' and 'master'
+	thesis={
+	    type=master,             % TODO: adjust thesis type; valid choices are 'bachelor', 'master', and 'digital'
+	    hide-architecture-note,  % hide architecture note, this is a CS thesis
+    },
 	oneside,               % TODO: only change to 'twoside' for printing (enables \cleardoublepage)
 ]{tudapub}
 
@@ -60,6 +63,7 @@
 }
 
 \title{Exploring the Effectiveness of Machine Learning Techniques for Intrusion Detection in Cybersecurity}  % TODO: adjust title
+\subtitle{They are not very effective.}  % TODO: adjust subtitle
 \author[J. Kim]{Jasmine Kim}  % TODO: adjust author
 \birthplace{Shadyside, Ohio}  % TODO: adjust birthplace
 \reviewer{  % TODO: adjust reviewers
@@ -82,6 +86,10 @@
 
 \addbibresource{references.bib}
 
+% this can be used to include only some of the content for faster compilation
+%   when writing
+% \includeonly{content/methods,content/discussion}
+
 \begin{document}
 	% TITLE PAGES
 	\pagenumbering{gobble}
@@ -97,7 +105,10 @@
 		\include{meta/acknowledgements}
 		\include{meta/affidavit}
 	}
-	\glsresetall  % reset glossary entries to expand them again on first use
+    % Reset glossary entries to expand them again on first use. Do not reset
+    %   symbols as that would override adding them in the preamble and symbols
+    %   should not be used outside the main text anyway.
+	\glsresetall[abbreviations]
 
 	% LISTS
 	\cleardoublepage
@@ -111,7 +122,6 @@
 		% end
 
 		\chapter*{Abbreviations and Symbols}
-			%\glsaddall  % forces all glossary entries to be shown
 			\printunsrtglossary[type=abbreviations]
 			\printunsrtglossary[type=symbols]
 		% end
