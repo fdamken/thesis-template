@@ -1,1 +1,22 @@
 \renewcommand{\th}{\textsuperscript{th}}  % shortcut for i^\text{th} as \(i\th\)
+
+% vectors, matrices, and tensors
+\renewcommand{\vec}[1]{\bm{#1}}
+\newcommand{\mat}[1]{\bm{#1}}
+\DeclareMathAlphabet{\mathsfit}{\encodingdefault}{\sfdefault}{m}{sl}
+\SetMathAlphabet{\mathsfit}{bold}{\encodingdefault}{\sfdefault}{bx}{n}
+\newcommand{\tens}[1]{\bm{\mathsfit{#1}}}
+
+% shortcuts for glossary entries
+\newcommand{\N}{{\gls{sym-N}}}
+\newcommand{\Nzero}{{\gls{sym-Nzero}}}
+\newcommand{\Q}{{\gls{sym-Q}}}
+\newcommand{\R}{{\gls{sym-R}}}
+\newcommand{\Rpos}{{\gls{sym-Rpos}}}
+\newcommand{\Rneg}{{\gls{sym-Rneg}}}
+
+% more advanced shortcuts for glossary entries
+\newcommand{\ball}[3][]{\glsadd{sym-ball}\hyperref[gls:sym-ball]{B_{#1}(#2, #3)}}
+\newcommand{\ballclosed}[3][]{\glsadd{sym-ballclosed}\hyperref[gls:sym-ballclosed]{\widetilde{B}_{#1}(#2, #3)}}
+\newcommand{\closure}[1]{\glsadd{sym-closure}\hyperref[gls:sym-closure]{\overline{#1}}}
+\newcommand{\interior}[1]{\glsadd{sym-interior}\hyperref[gls:sym-interior]{\mathrm{int}\,#1}}

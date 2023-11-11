@@ -22,6 +22,8 @@
 \usepackage{amsthm}     % theorems
 \usepackage{physics}    % d/dv, differentials, etc.
 \usepackage{siunitx}    % units and number typesetting
+\usepackage{bm}         % bold math, also for greek letters
+\usepackage{bbm}        % blackbord bold for numbers
 
 % references (load order amsmath -> hyperref -> cleveref -> autonum is crucial)
 \usepackage{hyperref}              % basic references
@@ -47,6 +49,7 @@
 \usepackage[autostyle]{csquotes}     % correct styling of quotes
 \usepackage[useregional]{datetime2}  % date/time formatting
 \usepackage[bottom]{footmisc}        % force footnotes to be below floats
+\usepackage[all]{foreign}            % foreign abbreviations, e.g., \eg, \ie, \etc, etc.
 \usepackage{enumitem}                % styling of list environments
 \usepackage[
 	nopatch=footnote,  % footnote patching is incompatible with hyperref
@@ -63,6 +66,7 @@
 	shortcuts=ac,             % enable \ac, \acp, etc. as shortcuts
 	toc=false,                % do not add glossaries to table of contents
 ]{glossaries-extra}                  % glossaries
+\usepackage{stmaryrd}                % \lightning
 \usepackage{subcaption}              % subfigures
 \usepackage{xspace}                  % intelligent space (after macros)
 
