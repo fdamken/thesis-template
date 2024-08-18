@@ -3,7 +3,7 @@ runs:
   using: composite
   steps:
     - name: Setup TeXLive
-      uses: teatimeguest/setup-texlive-action@v2
+      uses: teatimeguest/setup-texlive-action@v3
       with:
         packages: scheme-full
         update-all-packages: true
