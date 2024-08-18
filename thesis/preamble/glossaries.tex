@@ -1,11 +1,22 @@
+% glossaries
+\renewcommand{\abbreviationsname}{Abbreviations}
+
+% make sure to use the glossaries-extra commands
+\let\glsfirst\undefined
+\let\glsfirstplural\undefined
+\let\glstext\undefined
+\let\glsplural\undefined
+
 \GlsXtrLoadResources[
-	src=abbreviations,
-	sort=doc,  % sort according to the document's language
-	type=abbreviations,
+    category=abbreviation,
+    sort=doc,            % sort according to the document's language
+    src=abbreviations,   % source file (abbreviations.bib)
+    type=abbreviations,  % name of the glossary
 ]
 
 \GlsXtrLoadResources[
-	src=symbols,
-	sort=doc,  % sort according to the document's language
-	type=symbols,
+    category=symbol,
+    sort=use,      % sort in order of use
+    src=symbols,   % source file (symbols.bib)
+    type=symbols,  % name of the glossary
 ]

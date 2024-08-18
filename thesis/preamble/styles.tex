@@ -1,17 +1,36 @@
-% prevent usage of \cite; use \autocite instead
-\undef{\cite}
+\renewcommand*{\cite}{\errmessage{Use \autocite!}}
+\renewcommand*{\eqref}{\errmessage{Use \cref!}}
+\renewcommand*{\autoref}{\errmessage{Use \cref!}}
 
-% prevent usage of \eqref and \autoref; use \cref instead
-\undef{\eqref}
-\undef{\autoref}
+% allow the use of an 'axiom' counter
+\crefformat{axiom}{axiom~#2#1#3}
+\crefrangeformat{axiom}{axioms~#3#1#4 to~#5#2#6}
+\crefmultiformat{axiom}{axioms~#2#1#3}{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+% allow the use of an 'case' counter (for proof-by-cases)
+\crefformat{case}{case~#2#1#3}
+\crefrangeformat{case}{cases~#3#1#4 to~#5#2#6}
+\crefmultiformat{case}{cases~#2#1#3}{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+% change format eq. (..) to just (..)
+\crefformat{equation}{(#2#1#3)}
+\crefrangeformat{equation}{(#3#1#4) to~(#5#2#6)}
+\crefmultiformat{equation}{(#2#1#3)}{ and~(#2#1#3)}{, (#2#1#3)}{ and~(#2#1#3)}
+% allow the use of an 'rq' counter (for research questions)
+\crefformat{rq}{#2#1#3}
+\crefrangeformat{rq}{#3#1#4 to~#5#2#6}
+\crefmultiformat{rq}{#2#1#3}{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+% also show only the item name for research questions
+\crefalias{rq}{equation}
 
 % csquotes: easy quotes
 \MakeOuterQuote{"}
 
-% amsthm: theorems
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{lemma}[theorem]{Lemma}
+% theorem
+\declaretheorem[parent=chapter, title=Corollary]{corollary}
+\declaretheorem[parent=chapter, title=Definition]{definition}
+\declaretheorem[parent=chapter, title=Lemma]{lemma}
+\declaretheorem[parent=chapter, title=Proposition]{proposition}
+\declaretheorem[parent=chapter, title=Theorem]{theorem}
+\declaretheorem[title=Proof (Sketch), numbered=no, style=remark]{proof-sketch}
 
 % exclude subsections from toc
 \setcounter{tocdepth}{1}
@@ -22,38 +41,31 @@
 % algorithm2e: typeset comments as \text not \texttt
 \SetCommentSty{text}
 
-
-% Non-foreign well-known abbreviations (use foreign package for foreign words).
-\newcommand{\iid}{i.i.d.\xspace}
-\newcommand{\vs}{vs.\xspace}
-\newcommand{\wrt}{w.r.t.\xspace}
+% do not emphasize foreign words
+\renewcommand{\foreignabbrfont}{}
 
 % make loa, lof, lot sections
 \makeatletter
 \newcommand{\listalgorithmname}{List of Algorithms}
-\renewcommand\listofalgorithms{
-	\section*{\listalgorithmname}
-%	\@mkboth{\MakeUppercase\listalgorithmname}{\MakeUppercase\listalgorithmname}
-	\@starttoc{loa}
-}
-\renewcommand\listoffigures{
-	\section*{\listfigurename}
-%	\@mkboth{\MakeUppercase\listfigurename}{\MakeUppercase\listfigurename}
-	\@starttoc{lof}
-}
-\renewcommand\listoftables{
-	\section*{\listtablename}
-%	\@mkboth{\MakeUppercase\listtablename}{\MakeUppercase\listtablename}
-	\@starttoc{lot}
-}
+\renewcommand\listofalgorithms{\section*{\listalgorithmname}\@starttoc{loa}}
+\renewcommand\listoffigures{\section*{\listfigurename}\@starttoc{lof}}
+\renewcommand\listoftables{\section*{\listtablename}\@starttoc{lot}}
 \makeatother
 
-% glossaries
-\renewcommand{\abbreviationsname}{Abbreviations}
-\let\glsfirst\undefined
-\let\glsfirstplural\undefined
-\let\glstext\undefined
-\let\glsplural\undefined
+% do not place algorithm line numbers outside the box
+\setlength{\algomargin}{1.5em}
 
 % caption: center single-line captions, flush multi-line captions to the left
 \captionsetup{singlelinecheck=on}
+
+% siunitx setup, in particular boldface in tables
+\newrobustcmd{\best}{\DeclareFontSeriesDefault[rm]{bf}{b}\bfseries}
+\sisetup{
+    separate-uncertainty=true,  % write uncertainty as 10 \pm 2, not 10(2)
+    reset-text-series=false,
+    text-series-to-math=true,
+    mode=text
+}
+
+% sometimes, you just can't do anything about an overfull hbox...
+\newcommand{\ignorehbadness}[1]{\begingroup \hbadness=100000 \hfuzz=\maxdimen #1 \endgroup}

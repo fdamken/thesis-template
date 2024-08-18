@@ -1,5 +1,13 @@
 \renewcommand{\th}{\textsuperscript{th}}  % shortcut for i^\text{th} as \(i\th\)
 
+\newcommand{\proofnoqed}[1]{
+    \begin{proof}
+        \renewcommand{\qedsymbol}{}
+        #1
+    \end{proof}
+}
+\newcommand{\proofdeferred}[1]{\proofnoqed{See \cref{#1}.}}
+
 % vectors, matrices, and tensors
 \renewcommand{\vec}[1]{\bm{#1}}
 \newcommand{\mat}[1]{\bm{#1}}

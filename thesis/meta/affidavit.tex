@@ -1,4 +1,14 @@
+\ExplSyntaxOn
+\let\real_ptxcd_submissiondate=\ptxcd_submissiondate
+\renewcommand{\ptxcd_submissiondate}{\affidavitdate}
+\ExplSyntaxOff
+
 \affidavit[
-	signature-image={\includegraphics[width=\width]{signature}},  % TODO: adjust signature shown in the affidavit
-	affidavit=digital,
+    signature-image={\includegraphics[width=\width]{signature}},  % TODO: adjust signature shown in the affidavit
+    signature-location=Darmstadt,  % TODO: adjust place of signing
+    affidavit=digital,
 ]
+
+\ExplSyntaxOn
+\renewcommand{\ptxcd_submissiondate}{\real_ptxcd_submissiondate}
+\ExplSyntaxOff

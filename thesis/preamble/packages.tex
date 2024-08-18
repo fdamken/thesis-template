@@ -12,38 +12,49 @@
 
 % core
 \usepackage[
-	main=USenglish,  % main language is US English
-	ngerman,         % secondary is German (for the affidavit)
+    main=USenglish,  % main language is US English
+    ngerman,         % secondary is German (for the affidavit)
 ]{babel}
 
 % math
-\usepackage{mathtools}  % basic tools, includes amsmath and must be loaded first
-\usepackage{amssymb}    % extended mathematical symbols
-\usepackage{amsthm}     % theorems
-\usepackage{physics}    % d/dv, differentials, etc.
-\usepackage{siunitx}    % units and number typesetting
-\usepackage{bm}         % bold math, also for greek letters
-\usepackage{bbm}        % blackbord bold for numbers
+\usepackage{mathtools}    % basic tools, includes amsmath and must be loaded first
+\usepackage{amssymb}      % extended mathematical symbols
+\usepackage{amsthm}       % theorems (we essentially only use the proof environment, everything else is handled by thmtools)
+\usepackage{physics}      % d/dv, differentials, etc.
+\usepackage{siunitx}      % units and number typesetting
+\usepackage{bm}           % bold math, also for greek letters
+\usepackage{bbm}          % blackbord bold for numbers
+\usepackage{thmtools}     % extended version of amsthm
+\usepackage{thm-restate}  % allows restating theorems
+
+% load algorithm2e for pseudocode before cleveref, otherwise referencing lines
+% in pseudocode does not work properly and it references the algorithm number
+\usepackage[
+    ruled,          % enclose algorithms in horizontal lines
+    algochapter,    % include chapter number
+    vlined,         % mark blocks with vertical lines
+    noend,          % omit 'end' keyword (Pythonic)
+    linesnumbered,  % number lines
+    resetcount,     % reset line number count at the beginning of each algorithm
+]{algorithm2e}
 
 % references (load order amsmath -> hyperref -> cleveref -> autonum is crucial)
 \usepackage{hyperref}              % basic references
-\usepackage[capitalize]{cleveref}  % better references
+\usepackage[
+    capitalize,  % write Figure, Table, etc. capitalized
+    nameinlink,  % also cross-reference the name, e.g., [Section 1.1](...)
+    noabbrev,    % do not abbreviate cross-reference names
+]{cleveref}                        % better references
 \usepackage{autonum}               % auto-numbering equations
 \usepackage{etoolbox}
 
 % other
 \usepackage[
-	ruled,          % enclose algorithms in horizontal lines; maybe try 'boxed' or 'boxruled' once
-	algochapter,    % include chapter number
-	vlined,         % mark blocks with vertical lines
-	noend,          % omit 'end' keyword (Pythonic)
-	linesnumbered,  % number lines
-	resetcount,     % reset line number count at the beginning of each algorithm
-]{algorithm2e}                       % pseudocode
-\usepackage[
-	backend=biber,       % use biber backend
-	style=numeric-comp,  % compact citation mode, e.g., [1-4] instead of [1, 2, 3, 4]
-	sorting=none,        % sort by appearance in text
+    backend=biber,       % use biber backend
+    doi=false,           % do not include DOI in references, they lead to overfull hboxes
+    sorting=none,        % sort by appearance in text
+    style=numeric-comp,  % compact citation mode, e.g., [1-4] instead of [1, 2, 3, 4]
+    url=false,           % do not include URL in references (still included for @online references), they lead to overfull hboxes
 ]{biblatex}                          % bibliography
 \usepackage{booktabs}                % beautiful tables
 \usepackage[autostyle]{csquotes}     % correct styling of quotes
@@ -52,28 +63,35 @@
 \usepackage[all]{foreign}            % foreign abbreviations, e.g., \eg, \ie, \etc, etc.
 \usepackage{enumitem}                % styling of list environments
 \usepackage[
-	nopatch=footnote,  % footnote patching is incompatible with hyperref
+    nopatch=footnote,  % footnote patching is incompatible with hyperref
 ]{microtype}                  % fine-tuning of fonts
 \usepackage[
-	abbreviations,            % create abbreviations glossary
-	symbols,                  % create symbol glossary
-	nomain,                   % do not use main glossary
-	nogroupskip,              % do not add a blank row between groups
-	record,                   % use bib2gls
-	section,                  % place glossaries in sections, not chapters
-	stylemods=longbooktabs,   % load booktabs style
-	style=long3col-booktabs,  % use booktabs style
-	shortcuts=ac,             % enable \ac, \acp, etc. as shortcuts
-	toc=false,                % do not add glossaries to table of contents
+    abbreviations,           % create abbreviations glossary
+    symbols,                 % create symbol glossary
+    nomain,                  % do not use main glossary
+    nogroupskip,             % do not add a blank row between groups
+    record,                  % use bib2gls
+    section,                 % place glossaries in sections, not chapters
+    stylemods=longbooktabs,  % load booktabs style
+    shortcuts=ac,            % enable \ac, \acp, etc. as shortcuts
+    toc=false,               % do not add glossaries to table of contents
 ]{glossaries-extra}                  % glossaries
+\usepackage{glossary-mcols}
+\usepackage{makecell}                % allows line breaks in table cells
+\usepackage{multirow}                % table cells spanning multiple rows
 \usepackage{stmaryrd}                % \lightning
 \usepackage{subcaption}              % subfigures
+\usepackage{svg}                     % to include SVG files
+\usepackage[
+    para,  % use inline list instead of list with line breaks for brevity
+]{threeparttable}                    % for tables with footnotes
 \usepackage{xspace}                  % intelligent space (after macros)
 
 % TikZ
 \usepackage{tikz}       % tikz itself
 \usepackage{tikzscale}  % scaling tikz pictures
 \usetikzlibrary{
-	arrows.meta,  % arrow styling
-	positioning,  % relative positioning
+    arrows.meta,       % arrow styling
+    positioning,       % relative positioning
+    shapes.geometric,  % geometric shapes
 }
